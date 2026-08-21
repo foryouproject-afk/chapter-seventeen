@@ -63,8 +63,7 @@ body {
 
     background: rgba(255,255,255,0.055);
 
-    border:
-        1px solid rgba(255,255,255,0.13);
+    border: 1px solid rgba(255,255,255,0.13);
 
     border-radius: 24px;
 
@@ -115,15 +114,13 @@ input {
 
     padding: 15px;
 
-    border:
-        1px solid rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.15);
 
     outline: none;
 
     border-radius: 10px;
 
-    background:
-        rgba(255,255,255,.08);
+    background: rgba(255,255,255,.08);
 
     color: white;
 
@@ -172,6 +169,104 @@ button:hover {
     margin-top: 14px !important;
 
     margin-bottom: 0 !important;
+}
+
+
+/* =========================
+   WRONG PASSWORD WARNING
+========================= */
+
+#wrongPassword {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 20000;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #3b2229 0%,
+            #160f12 45%,
+            #050506 100%
+        );
+
+    animation: warningFade .35s ease;
+}
+
+.warning-box {
+    width: 100%;
+
+    max-width: 420px;
+
+    text-align: center;
+
+    padding: 45px 30px;
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.045);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.7);
+
+    animation: warningUp .45s ease;
+}
+
+.warning-line {
+    width: 45px;
+
+    height: 1px;
+
+    margin: 0 auto 25px;
+
+    background: #bd899b;
+}
+
+.warning-title {
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 5px;
+
+    color: #d09aaa;
+
+    margin-bottom: 18px;
+}
+
+.warning-message {
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+
+    color: #aaa;
+
+    line-height: 1.7;
+
+    margin-bottom: 25px;
+}
+
+.warning-count {
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #666;
 }
 
 
@@ -304,8 +399,7 @@ button:hover {
 
     background: #171719;
 
-    border:
-        1px solid rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.08);
 
     box-shadow:
         0 15px 40px rgba(0,0,0,.35);
@@ -326,8 +420,7 @@ button:hover {
 
     cursor: pointer;
 
-    transition:
-        transform .5s ease;
+    transition: transform .5s ease;
 }
 
 .photo-card img:hover {
@@ -355,8 +448,7 @@ button:hover {
 
     background: #050505;
 
-    border:
-        1px solid rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.08);
 
     box-shadow:
         0 15px 40px rgba(0,0,0,.35);
@@ -436,7 +528,7 @@ footer {
 
 
 /* =========================
-   IMAGE VIEWER
+   FULLSCREEN FOTO
 ========================= */
 
 #viewer {
@@ -512,6 +604,34 @@ footer {
     }
 }
 
+@keyframes warningFade {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes warningUp {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
 
 /* =========================
    TABLET
@@ -569,6 +689,7 @@ footer {
 
     .header p {
         font-size: 13px;
+
         line-height: 1.8;
     }
 
@@ -592,10 +713,6 @@ footer {
     }
 
     .photo-card img {
-        /*
-        Tidak dipaksa memenuhi kotak.
-        Rasio tetap portrait.
-        */
         aspect-ratio: auto;
 
         width: 100%;
@@ -621,10 +738,6 @@ footer {
     }
 
     .video-card video {
-        /*
-        INI YANG MEMBUAT VIDEO
-        TIDAK NGE-ZOOM.
-        */
         width: 100%;
 
         height: auto;
@@ -686,9 +799,9 @@ footer {
 <body>
 
 
-<!-- =========================
+<!-- ==================================================
      LOGIN
-========================= -->
+================================================== -->
 
 <div id="login">
 
@@ -725,16 +838,43 @@ footer {
 </div>
 
 
-<!-- =========================
-     GALLERY
-========================= -->
+<!-- ==================================================
+     WRONG PASSWORD FULLSCREEN
+================================================== -->
+
+<div id="wrongPassword">
+
+    <div class="warning-box">
+
+        <div class="warning-line"></div>
+
+        <div class="warning-title">
+            ACCESS DENIED
+        </div>
+
+        <div class="warning-message">
+            Password yang dimasukkan tidak sesuai.
+        </div>
+
+        <div class="warning-count">
+            Try again
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     MAIN GALLERY
+================================================== -->
 
 <div id="gallery">
 
 
-    <!-- =====================
+    <!-- =========================
          OPENING
-    ====================== -->
+    ========================= -->
 
     <div class="header">
 
@@ -761,9 +901,9 @@ footer {
     </div>
 
 
-    <!-- =====================
+    <!-- =========================
          3 FOTO
-    ====================== -->
+    ========================= -->
 
     <div class="section">
 
@@ -831,9 +971,9 @@ footer {
     </div>
 
 
-    <!-- =====================
-         2 VIDEO
-    ====================== -->
+    <!-- =========================
+         5 VIDEO
+    ========================= -->
 
     <div class="section">
 
@@ -901,14 +1041,80 @@ footer {
             </div>
 
 
+            <!-- VIDEO 3 -->
+
+            <div class="video-card">
+
+                <video
+                    controls
+                    playsinline
+                    preload="metadata"
+                >
+
+                    <source
+                        src="video3.mp4"
+                        type="video/mp4"
+                    >
+
+                    Browser tidak mendukung video.
+
+                </video>
+
+            </div>
+
+
+            <!-- VIDEO 4 -->
+
+            <div class="video-card">
+
+                <video
+                    controls
+                    playsinline
+                    preload="metadata"
+                >
+
+                    <source
+                        src="video4.mp4"
+                        type="video/mp4"
+                    >
+
+                    Browser tidak mendukung video.
+
+                </video>
+
+            </div>
+
+
+            <!-- VIDEO 5 -->
+
+            <div class="video-card">
+
+                <video
+                    controls
+                    playsinline
+                    preload="metadata"
+                >
+
+                    <source
+                        src="video5.mp4"
+                        type="video/mp4"
+                    >
+
+                    Browser tidak mendukung video.
+
+                </video>
+
+            </div>
+
+
         </div>
 
     </div>
 
 
-    <!-- =====================
+    <!-- =========================
          CLOSING
-    ====================== -->
+    ========================= -->
 
     <div class="closing">
 
@@ -944,9 +1150,9 @@ footer {
 </div>
 
 
-<!-- =========================
-     FULLSCREEN FOTO
-========================= -->
+<!-- ==================================================
+     FULLSCREEN PHOTO VIEWER
+================================================== -->
 
 <div
     id="viewer"
@@ -971,12 +1177,18 @@ footer {
 
 <script>
 
-/* =========================
+/* ==================================================
    PASSWORD
-========================= */
+================================================== */
 
-const PASSWORD = "031209";
+const PASSWORD = "040909";
 
+let warningTimer;
+
+
+/* ==================================================
+   LOGIN
+================================================== */
 
 function login() {
 
@@ -986,6 +1198,11 @@ function login() {
     const error =
         document.getElementById("error");
 
+    const warning =
+        document.getElementById("wrongPassword");
+
+
+    /* PASSWORD BENAR */
 
     if (input.value === PASSWORD) {
 
@@ -997,25 +1214,44 @@ function login() {
 
         window.scrollTo(0, 0);
 
+        return;
     }
 
-    else {
 
-        error.textContent =
-            "Password tidak sesuai.";
+    /* PASSWORD SALAH */
 
-        input.value = "";
+    error.textContent = "";
+
+    input.value = "";
+
+
+    /* Hentikan timer sebelumnya
+       kalau user menekan berulang kali */
+
+    clearTimeout(warningTimer);
+
+
+    /* Tampilkan fullscreen */
+
+    warning.style.display = "flex";
+
+
+    /* Hilangkan setelah 5 detik */
+
+    warningTimer = setTimeout(function() {
+
+        warning.style.display = "none";
 
         input.focus();
 
-    }
+    }, 5000);
 
 }
 
 
-/* =========================
+/* ==================================================
    ENTER UNTUK LOGIN
-========================= */
+================================================== */
 
 document
     .getElementById("password")
@@ -1024,16 +1260,18 @@ document
         function(e) {
 
             if (e.key === "Enter") {
+
                 login();
+
             }
 
         }
     );
 
 
-/* =========================
+/* ==================================================
    FULLSCREEN FOTO
-========================= */
+================================================== */
 
 function openImage(src) {
 
@@ -1050,9 +1288,9 @@ function openImage(src) {
 }
 
 
-/* =========================
+/* ==================================================
    TUTUP FOTO
-========================= */
+================================================== */
 
 function closeImage() {
 
@@ -1065,16 +1303,18 @@ function closeImage() {
 }
 
 
-/* =========================
+/* ==================================================
    ESC UNTUK MENUTUP FOTO
-========================= */
+================================================== */
 
 document.addEventListener(
     "keydown",
     function(e) {
 
         if (e.key === "Escape") {
+
             closeImage();
+
         }
 
     }
@@ -1084,4 +1324,4 @@ document.addEventListener(
 
 
 </body>
-  </html>
+   </html>
